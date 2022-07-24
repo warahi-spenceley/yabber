@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "476731747917",
+    "project_id": "yabber-fb521",
+    "storage_bucket": "yabber-fb521.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476731747917:android:8e596ff9414f2457077604",
+        "android_client_info": {
+          "package_name": "com.yabber.yabber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476731747917-7l8c6u2hs55bro7sd1p01asak16uafbo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKNUnzFwCWcL7tuuqkw9uLTqEefi0yNog"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476731747917-7l8c6u2hs55bro7sd1p01asak16uafbo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
