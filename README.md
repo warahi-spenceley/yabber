@@ -1,6 +1,15 @@
-# yabber
+- [Introduction](#introduction)
+  - [Project description](#project-description)
+  - [Getting Started](#getting-started)
+- [Development Environment](#development-environment)
+  - [Requirements](#requirements)
 
-A new Flutter project.
+# Introduction
+
+## Project description
+
+This repository contains the source code for Yabber. This application's aim end result is private for now.
+But some of it's features will include authentication and live messaging with the help from Google's Firebase.
 
 ## Getting Started
 
@@ -14,3 +23,8 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+# Development Environment
+
+## Requirements
+...
