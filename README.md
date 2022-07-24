@@ -27,4 +27,6 @@ samples, guidance on mobile development, and a full API reference.
 # Development Environment
 
 ## Requirements
-...
+* Install the tools below
+  * Flutter (`https://docs.flutter.dev/get-started/install?gclid=Cj0KCQjw2_OWBhDqARIsAAUNTTGn36wZE9HCZVrkWjVy67_jQLg8LC_zBMumGHmWos293mrjO0giqPAaApnwEALw_wcB&gclsrc=aw.ds`)
+  * Android studio(`https://developer.android.com/studio?gclid=Cj0KCQjw2_OWBhDqARIsAAUNTTGsqVpQGioI50sWQ2yH0EupCNer_1wuHjoxJZFNugceDpxNtGCrmOYaAnS2EALw_wcB&gclsrc=aw.ds`)
