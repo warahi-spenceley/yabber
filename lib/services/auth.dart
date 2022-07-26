@@ -12,10 +12,20 @@ class AuthService {
   }
 
   // auth change user stream
-  Stream<SignedInUser> get user {
-    return _auth.authStateChanges()
+  Stream<SignedInUser?> get user {
+    return _auth.userChanges()
       .map((User? user) => _userFromFirebaseUser(user!));
   }
+
+  // FirebaseAuth.instance
+  // .userChanges()
+  // .listen((User? user) {
+  //   if (user == null) {
+  //     print('User is currently signed out!');
+  //   } else {
+  //     print('User is signed in!');
+  //   }
+  // });
 
   // sign in anon
   Future signInAnon() async {
