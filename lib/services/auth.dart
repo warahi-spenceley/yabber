@@ -15,17 +15,9 @@ class AuthService {
   Stream<SignedInUser?> get user {
     return _auth.userChanges()
       .map((User? user) => _userFromFirebaseUser(user!));
+      // Below will do the same as above if user not nullable.
+      // .map(_userFromFirebaseUser);
   }
-
-  // FirebaseAuth.instance
-  // .userChanges()
-  // .listen((User? user) {
-  //   if (user == null) {
-  //     print('User is currently signed out!');
-  //   } else {
-  //     print('User is signed in!');
-  //   }
-  // });
 
   // sign in anon
   Future signInAnon() async {
