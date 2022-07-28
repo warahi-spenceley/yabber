@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:yabber/models/SignedInUser.dart';
 import 'package:yabber/screens/authenticate/authenticate.dart';
+import 'package:yabber/screens/home/home.dart';
 
 class Wrapper extends StatelessWidget {
   const Wrapper({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    final user = Provider.of<SignedInUser?>(context);
+    print(user);
     
     // return either Home or Authenticate widget
-    return const Authenticate();
+    return user != null ? const Home() : const Authenticate();
   }
 }
