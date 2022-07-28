@@ -30,8 +30,24 @@ class AuthService {
   }
 
   // sign in with email & password
+  Future signIn() async {
+    try {
+      //  _auth.signInWithEmailAndPassword(email: email, password: password)
+    } catch (error) {
+      print(error.toString());
+      return null;
+    }
+  }
 
   // register with email & password
+  Future register() async {
+    try {
+      //  _auth.createUserWithEmailAndPassword(email: email, password: password)
+    } catch (error) {
+      print(error.toString());
+      return null;
+    }
+  }
 
   // sign out
   Future signOut() async {

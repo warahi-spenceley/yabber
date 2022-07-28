@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:yabber/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
 
   final Function toggleView;
-  const SignIn({Key? key,  required this.toggleView }) : super(key: key);
+  const Register({Key? key,  required this.toggleView }) : super(key: key);
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
 
   final AuthService _auth = AuthService();
 
@@ -25,11 +25,11 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
-        title: const Text('Sign in to Yabber'),
+        title: const Text('Register for Yabber'),
         actions: <Widget>[
           ElevatedButton.icon(
             icon: const Icon(Icons.person), 
-            label: const Text('Register'),
+            label: const Text('Sign In'),
             onPressed: () {
               widget.toggleView();
             },
@@ -56,23 +56,10 @@ class _SignInState extends State<SignIn> {
               ),
               const SizedBox(height: 20.0),
               ElevatedButton(
-                child: const Text('Sign in'),
+                child: const Text('Register'),
                 onPressed: () async {
                   print(email);
                   print(password);
-                },
-              ),
-              const SizedBox(height: 20.0),
-              ElevatedButton(
-                child: const Text('Continue as guest'),
-                onPressed: () async {
-                  dynamic result = await _auth.signInAnon();
-                  if (result == null) {
-                    print('error signing in');
-                  } else {
-                    print('Successfully signed in');
-                    print(result.uid);
-                  }
                 },
               ),
             ],
