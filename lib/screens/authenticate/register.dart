@@ -53,7 +53,7 @@ class _RegisterState extends State<Register> {
               ),
               const SizedBox(height: 20.0),
               TextFormField(
-                validator: (dynamic value) => value.length < 6 ? "Please make sure your password is atleast 6 characters long." : null,
+                validator: (dynamic value) => value.length < 6 ? "Your password should be atleast 6 characters long." : null,
                 obscureText: true,
                 onChanged: (value) => {
                   setState(() => password = value)

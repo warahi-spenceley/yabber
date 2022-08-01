@@ -13,10 +13,12 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
 
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
 
   // Text field state
   String email = '';
   String password = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -39,16 +41,19 @@ class _SignInState extends State<SignIn> {
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: Form(
+          key: _formKey,
           child: Column(
             children: <Widget>[
               const SizedBox(height: 20.0),
               TextFormField(
+                validator: (dynamic value) => RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value) ? null : "Please enter a valid email.",
                 onChanged: (value) => {
                   setState(() => email = value)
                 },
               ),
               const SizedBox(height: 20.0),
               TextFormField(
+                validator: (dynamic value) => value.length < 6 ? "Your password will be atleast 6 characters long." : null,
                 obscureText: true,
                 onChanged: (value) => {
                   setState(() => password = value)
@@ -58,23 +63,31 @@ class _SignInState extends State<SignIn> {
               ElevatedButton(
                 child: const Text('Sign in'),
                 onPressed: () async {
-                  print(email);
-                  print(password);
+                  if (_formKey.currentState!.validate()){
+                    dynamic result = await _auth.signInWithEmailAndPassword(email, password);
+                    if (result == null){
+                      setState(() => error = 'Oops something went wrong.');
+                    }
+                  }
                 },
               ),
               const SizedBox(height: 20.0),
               ElevatedButton(
                 child: const Text('Continue as guest'),
                 onPressed: () async {
-                  dynamic result = await _auth.signInAnon();
-                  if (result == null) {
-                    print('error signing in');
-                  } else {
-                    print('Successfully signed in');
-                    print(result.uid);
+                  if (_formKey.currentState!.validate()){
+                    dynamic result = await _auth.signInAnon();
+                    if (result == null){
+                      setState(() => error = 'Oops something went wrong.');
+                    }
                   }
                 },
               ),
+              const SizedBox(height: 12.00),
+              Text(
+                error,
+                style: const TextStyle(color: Colors.red, fontSize: 14.0),
+              )
             ],
           )
         )
