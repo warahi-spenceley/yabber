@@ -13,6 +13,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
 
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
 
   // Text field state
   String email = '';
@@ -39,16 +40,19 @@ class _RegisterState extends State<Register> {
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: Form(
+          key: _formKey,
           child: Column(
             children: <Widget>[
               const SizedBox(height: 20.0),
               TextFormField(
+                validator: (dynamic value) => RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value) ? null : "Please enter a valid email",
                 onChanged: (value) => {
                   setState(() => email = value)
                 },
               ),
               const SizedBox(height: 20.0),
               TextFormField(
+                validator: (dynamic value) => value.length < 6 ? "Please make sure your password is atleast 6 characters long" : null,
                 obscureText: true,
                 onChanged: (value) => {
                   setState(() => password = value)
@@ -58,8 +62,9 @@ class _RegisterState extends State<Register> {
               ElevatedButton(
                 child: const Text('Register'),
                 onPressed: () async {
-                  print(email);
-                  print(password);
+                  if (_formKey.currentState!.validate()){
+                    print('validated');
+                  }
                 },
               ),
             ],
