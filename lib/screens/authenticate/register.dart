@@ -18,6 +18,7 @@ class _RegisterState extends State<Register> {
   // Text field state
   String email = '';
   String password = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +46,14 @@ class _RegisterState extends State<Register> {
             children: <Widget>[
               const SizedBox(height: 20.0),
               TextFormField(
-                validator: (dynamic value) => RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value) ? null : "Please enter a valid email",
+                validator: (dynamic value) => RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value) ? null : "Please enter a valid email.",
                 onChanged: (value) => {
                   setState(() => email = value)
                 },
               ),
               const SizedBox(height: 20.0),
               TextFormField(
-                validator: (dynamic value) => value.length < 6 ? "Please make sure your password is atleast 6 characters long" : null,
+                validator: (dynamic value) => value.length < 6 ? "Please make sure your password is atleast 6 characters long." : null,
                 obscureText: true,
                 onChanged: (value) => {
                   setState(() => password = value)
@@ -63,10 +64,18 @@ class _RegisterState extends State<Register> {
                 child: const Text('Register'),
                 onPressed: () async {
                   if (_formKey.currentState!.validate()){
-                    print('validated');
+                    dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+                    if (result == null){
+                      setState(() => error = 'Oops something went wrong.');
+                    }
                   }
                 },
               ),
+              const SizedBox(height: 12.00),
+              Text(
+                error,
+                style: const TextStyle(color: Colors.red, fontSize: 14.0),
+              )
             ],
           )
         )
