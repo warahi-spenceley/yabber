@@ -8,8 +8,8 @@
 
 ## Project description
 
-This repository contains the source code for Yabber. This application's aim end result is private for now.
-But some of it's features will include authentication and live messaging with the help from Google's Firebase.
+This repository contains the source code for Yabber. This application's end result goal is private for now.
+But some features will include authentication and live messaging with the help of Google's Firebase.
 
 ## Getting Started
 
